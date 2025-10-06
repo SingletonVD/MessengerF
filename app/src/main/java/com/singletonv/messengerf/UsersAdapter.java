@@ -48,7 +48,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         holder.viewUserStatus.setBackground(background);
         holder.itemView.setOnClickListener(view -> {
             if (onUserClickListener != null) {
-                onUserClickListener.onUserClick();
+                onUserClickListener.onUserClick(user);
             }
         });
     }
@@ -68,7 +68,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     }
 
     public interface OnUserClickListener {
-        void onUserClick();
+        void onUserClick(User user);
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {

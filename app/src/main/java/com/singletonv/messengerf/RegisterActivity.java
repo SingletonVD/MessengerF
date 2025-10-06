@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 int ageInt = Integer.parseInt(age);
                 viewModel.signUp(email, password, name, lastName, ageInt).addOnSuccessListener(authResult -> {
-                            Intent intent = UsersActivity.makeIntent(this);
+                            Intent intent = UsersActivity.makeIntent(this, authResult.getUser().getUid());
                             startActivity(intent);
                             finish();
                         }).addOnFailureListener(

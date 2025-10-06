@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         if (viewModel.getCurrentUser() == null) {
             intent = LoginActivity.makeIntent(this);
         } else {
-            intent = UsersActivity.makeIntent(this);
+            intent = UsersActivity.makeIntent(this, viewModel.getCurrentUser().getUid());
         }
 
         startActivity(intent);

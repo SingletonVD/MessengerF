@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 viewModel.login(email, password).addOnFailureListener(
                         exception -> showToast(exception.getMessage())
                 ).addOnSuccessListener(authResult -> {
-                    Intent intent = UsersActivity.makeIntent(this);
+                    Intent intent = UsersActivity.makeIntent(this, authResult.getUser().getUid());
                     startActivity(intent);
                     finish();
                 });
