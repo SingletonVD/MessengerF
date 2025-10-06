@@ -94,4 +94,8 @@ public class ChatViewModel extends ViewModel {
                 })
                 .addOnFailureListener(e -> error.setValue(e.getMessage()));
     }
+
+    public void setUserOnline(boolean online) {
+        userReference.child(currentUserId).child("online").setValue(online);
+    }
 }

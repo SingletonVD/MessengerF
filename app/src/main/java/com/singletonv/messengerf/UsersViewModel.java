@@ -63,4 +63,10 @@ public class UsersViewModel extends AndroidViewModel {
     public LiveData<List<User>> getUsers() {
         return users;
     }
+
+    public void setUserOnline(boolean online) {
+        if (mAuth.getCurrentUser() != null) {
+            userReference.child(mAuth.getCurrentUser().getUid()).child("online").setValue(online);
+        }
+    }
 }
