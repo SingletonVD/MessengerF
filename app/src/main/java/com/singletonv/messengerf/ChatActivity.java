@@ -75,7 +75,7 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        viewModel.setUserOnline(true);
+        viewModel.setUserOnline(false);
     }
 
     private void initViews() {

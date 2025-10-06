@@ -51,6 +51,7 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itemLogout) {
+            viewModel.setUserOnline(false);
             viewModel.logout();
             Intent intent = LoginActivity.makeIntent(this);
             startActivity(intent);
@@ -68,7 +69,7 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        viewModel.setUserOnline(true);
+        viewModel.setUserOnline(false);
     }
 
     private void initViews() {
