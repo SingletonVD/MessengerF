@@ -5,16 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/messengerf"
-        android:textAlignment="center"
-        android:textColor="@color/main_color"
-        android:textSize="42sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".UsersActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
