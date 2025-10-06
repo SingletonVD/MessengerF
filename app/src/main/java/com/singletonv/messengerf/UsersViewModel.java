@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,10 +34,17 @@ public class UsersViewModel extends AndroidViewModel {
         userReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser == null) return;
+
                 List<User> usersInDb = new ArrayList<>();
 
                 for (DataSnapshot userSnapshot: snapshot.getChildren()) {
-                    usersInDb.add(userSnapshot.getValue(User.class));
+                    User user = userSnapshot.getValue(User.class);
+                    if (user == null) return;
+                    if (!(currentUser.getUid().equals(user.getId()))) {
+                        usersInDb.add(user);
+                    }
                 }
                 users.setValue(usersInDb);
             }
