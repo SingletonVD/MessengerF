@@ -12,13 +12,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivityViewModel extends AndroidViewModel {
+public class RegisterViewModel extends AndroidViewModel {
 
     private final FirebaseAuth mAuth;
     private final FirebaseDatabase firebaseDatabase;
     private final DatabaseReference userReference;
 
-    public RegisterActivityViewModel(@NonNull Application application) {
+    public RegisterViewModel(@NonNull Application application) {
         super(application);
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();

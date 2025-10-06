@@ -8,13 +8,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainActivityViewModel viewModel;
+    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         Intent intent;
 

@@ -17,7 +17,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private Button buttonResetPassword;
 
-    private ResetPasswordActivityViewModel viewModel;
+    private ResetPasswordViewModel viewModel;
 
     public static Intent makeIntent(Context context, String email) {
         Intent intent = new Intent(context, ResetPasswordActivity.class);
@@ -30,7 +30,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
         initViews();
-        viewModel = new ViewModelProvider(this).get(ResetPasswordActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ResetPasswordViewModel.class);
 
         String prefilledEmail = getIntent().getStringExtra(EMAIL_EXTRA);
         editTextEmail.setText(prefilledEmail);

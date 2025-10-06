@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextAge;
     private Button buttonSignUp;
 
-    private RegisterActivityViewModel viewModel;
+    private RegisterViewModel viewModel;
 
     private static final String EMAIL_EXTRA = "email";
 
@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initViews();
-        viewModel = new ViewModelProvider(this).get(RegisterActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
 
         String prefilledEmail = getIntent().getStringExtra(EMAIL_EXTRA);
         editTextEmail.setText(prefilledEmail);
