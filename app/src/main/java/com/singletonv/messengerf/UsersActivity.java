@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class UsersActivity extends AppCompatActivity {
 
@@ -18,11 +19,16 @@ public class UsersActivity extends AppCompatActivity {
 
     private UsersActivityViewModel viewModel;
 
+    private RecyclerView recyclerViewUsers;
+    private UsersAdapter usersAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(R.layout.activity_users);
+        initViews();
         viewModel = new ViewModelProvider(this).get(UsersActivityViewModel.class);
+        viewModel.getUsers().observe(this, usersAdapter::setUsers);
     }
 
     @Override
@@ -40,5 +46,11 @@ public class UsersActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initViews() {
+        recyclerViewUsers = findViewById(R.id.recyclerViewUsers);
+        usersAdapter = new UsersAdapter();
+        recyclerViewUsers.setAdapter(usersAdapter);
     }
 }

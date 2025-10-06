@@ -53,7 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
                     age.isEmpty()) {
                 showToast(getString(R.string.fill_all_fields));
             } else {
-                viewModel.signUp(email, password).addOnSuccessListener(authResult -> {
+                int ageInt = Integer.parseInt(age);
+                viewModel.signUp(email, password, name, lastName, ageInt).addOnSuccessListener(authResult -> {
                             Intent intent = UsersActivity.makeIntent(this);
                             startActivity(intent);
                             finish();
