@@ -33,18 +33,24 @@ public class LoginActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         textViewForgotPassword.setOnClickListener(view -> {
-            Intent intent = ResetPasswordActivity.makeIntent(this, getEmail());
+            Intent intent = ResetPasswordActivity.makeIntent(
+                    this,
+                    Util.getTrimmedValue(editTextEmail)
+            );
             startActivity(intent);
         });
 
         textViewRegister.setOnClickListener(view -> {
-            Intent intent = RegisterActivity.makeIntent(this, getEmail());
+            Intent intent = RegisterActivity.makeIntent(
+                    this,
+                    Util.getTrimmedValue(editTextEmail)
+            );
             startActivity(intent);
         });
 
         buttonLogin.setOnClickListener(view -> {
-            String email = getEmail();
-            String password = getPassword();
+            String email = Util.getTrimmedValue(editTextEmail);
+            String password = Util.getTrimmedValue(editTextPassword);
 
             if (email.isEmpty() || password.isEmpty()) {
                 showToast(getString(R.string.fill_all_fields));
@@ -62,14 +68,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showToast(String notification) {
         Toast.makeText(this, notification, Toast.LENGTH_SHORT).show();
-    }
-
-    private String getEmail() {
-        return editTextEmail.getText().toString().trim();
-    }
-
-    private String getPassword() {
-        return editTextPassword.getText().toString().trim();
     }
 
     private void initViews() {

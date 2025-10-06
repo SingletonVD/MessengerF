@@ -36,7 +36,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         editTextEmail.setText(prefilledEmail);
 
         buttonResetPassword.setOnClickListener(view -> {
-            String email = getEmail();
+            String email = Util.getTrimmedValue(editTextEmail);
 
             if (email.isEmpty()) {
                 showToast(getString(R.string.fill_all_fields));
@@ -59,9 +59,5 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private void showToast(String notification) {
         Toast.makeText(this, notification, Toast.LENGTH_SHORT).show();
-    }
-
-    private String getEmail() {
-        return editTextEmail.getText().toString().trim();
     }
 }

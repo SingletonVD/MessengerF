@@ -40,11 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
         editTextEmail.setText(prefilledEmail);
 
         buttonSignUp.setOnClickListener(view -> {
-            String email = getEmail();
-            String password = getPassword();
-            String name = getName();
-            String lastName = getLastName();
-            String age = getAge();
+            String email = Util.getTrimmedValue(editTextEmail);
+            String password = Util.getTrimmedValue(editTextPassword);
+            String name = Util.getTrimmedValue(editTextName);
+            String lastName = Util.getTrimmedValue(editTextLastName);
+            String age = Util.getTrimmedValue(editTextAge);
 
             if (email.isEmpty() ||
                     password.isEmpty() ||
@@ -66,26 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void showToast(String notification) {
         Toast.makeText(this, notification, Toast.LENGTH_SHORT).show();
-    }
-
-    private String getEmail() {
-        return editTextEmail.getText().toString().trim();
-    }
-
-    private String getPassword() {
-        return editTextPassword.getText().toString().trim();
-    }
-
-    private String getName() {
-        return editTextName.getText().toString().trim();
-    }
-
-    private String getLastName() {
-        return editTextLastName.getText().toString().trim();
-    }
-
-    private String getAge() {
-        return editTextAge.getText().toString().trim();
     }
 
     private void initViews() {
