@@ -17,7 +17,7 @@ public class UsersActivity extends AppCompatActivity {
         return new Intent(context, UsersActivity.class);
     }
 
-    private UsersActivityViewModel viewModel;
+    private UsersViewModel viewModel;
 
     private RecyclerView recyclerViewUsers;
     private UsersAdapter usersAdapter;
@@ -27,7 +27,7 @@ public class UsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
         initViews();
-        viewModel = new ViewModelProvider(this).get(UsersActivityViewModel.class);
+        viewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         viewModel.getUsers().observe(this, usersAdapter::setUsers);
     }
 
